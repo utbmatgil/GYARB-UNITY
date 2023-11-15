@@ -6,7 +6,11 @@ using TMPro;
 public class PlayerMovementTutorial : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    public int moveSpeed;
+    public int sprint;
+    public int walkSpeed;
+    private int currentSpeed;
+    bool isSprinting = true;
 
     public float groundDrag;
 
@@ -15,7 +19,6 @@ public class PlayerMovementTutorial : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
 
     [Header("Keybinds")]
@@ -56,6 +59,14 @@ public class PlayerMovementTutorial : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = sprint;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
     }
 
     private void FixedUpdate()
@@ -102,7 +113,7 @@ public class PlayerMovementTutorial : MonoBehaviour
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
+        } 
     }
 
     private void Jump()
