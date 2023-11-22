@@ -30,6 +30,7 @@ public class ToggleTextField : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 textFieldObject.SetActive(true);
+                NumPad.Select();
                 NumPad.ActivateInputField();
             }
 
