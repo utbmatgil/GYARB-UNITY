@@ -21,7 +21,6 @@ public class ToggleTextField : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(door.position, transform.position);
-        Debug.Log(dist);
         InterText.SetActive(false);
         if (dist < 2)
         {
