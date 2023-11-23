@@ -15,12 +15,12 @@ public class DoorScript : MonoBehaviour
  
     void Update()
     {
-        //This will tell if the player press F on the Keyboard. P.S. You can change the key if you want.
-        if (Input.GetKeyDown(KeyCode.F))
+        //This will tell if the player press E on the Keyboard. P.S. You can change the key if you want.
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Pressed();
-            //Delete if you dont want Text in the Console saying that You Press F.
-            Debug.Log("You Press F");
+            //Delete if you dont want Text in the Console saying that You Press E.
+            Debug.Log("You Press E");
         }
     }
  
