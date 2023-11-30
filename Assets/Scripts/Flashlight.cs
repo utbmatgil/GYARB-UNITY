@@ -5,7 +5,6 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour
 {
     public GameObject flashlight;
-    public GameObject flashlight2;
 
     public AudioSource turnOn;
     public AudioSource turnOff;
@@ -20,7 +19,6 @@ public class Flashlight : MonoBehaviour
     {
         off = true;
         flashlight.SetActive(false);
-        flashlight2.SetActive(false);
     }
 
 
@@ -31,7 +29,6 @@ public class Flashlight : MonoBehaviour
         if(off && Input.GetKeyDown(KeyCode.F))
         {
             flashlight.SetActive(true);
-            flashlight2.SetActive(true);
             //turnOn.Play();
             off = false;
             on = true;
@@ -40,7 +37,6 @@ public class Flashlight : MonoBehaviour
         else if (on && Input.GetKeyDown(KeyCode.F))
         {
             flashlight.SetActive(false);
-            flashlight2.SetActive(false);
             //turnOff.Play();
             off = true;
             on = false;

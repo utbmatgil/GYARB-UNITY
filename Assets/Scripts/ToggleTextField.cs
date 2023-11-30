@@ -21,21 +21,16 @@ public class ToggleTextField : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(door.position, transform.position);
+        InterText.SetActive(false);
         if (dist < 2)
         {
             InterText.SetActive(true);
-
+    
             if (Input.GetKeyDown(KeyCode.E))
             {
                 textFieldObject.SetActive(true);
                 NumPad.Select();
                 NumPad.ActivateInputField();
-            }
-            else if (dist > 2)
-            {
-                InterText.SetActive(false);
-                textFieldObject.SetActive(false);
-
             }
 
             else if (Input.GetKeyDown(KeyCode.Return))
@@ -54,7 +49,7 @@ public class ToggleTextField : MonoBehaviour
                     Debug.Log("You Loose");
                 }
                 NumPad.text = "";
-
+                
             }
         }
     }
