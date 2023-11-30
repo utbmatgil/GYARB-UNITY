@@ -1,51 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class DoorScript : MonoBehaviour
 {
     public Transform PlayerCamera;
-    [Header("MaxDistance you can open or close the door.")]
     public float MaxDistance = 5;
- 
+
     private bool opened = false;
-    private  Animator anim;
- 
- 
- 
+    private Animator anim;
+
     void Update()
     {
-        //This will tell if the player press E on the Keyboard. P.S. You can change the key if you want.
+        // Check if the 'E' key is pressed down this frame
         if (Input.GetKeyDown(KeyCode.E))
         {
             Pressed();
-            //Delete if you dont want Text in the Console saying that You Press E.
             Debug.Log("You Press E");
         }
     }
- 
+
     void Pressed()
     {
-        //This will name the Raycasthit and came information of which object the raycast hit.
         RaycastHit doorhit;
- 
-        if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out doorhit, MaxDistance))
+
+        // Use Input.GetKey instead of Input.GetKeyDown to make sure you're not checking every frame
+        // Also, consider checking for other conditions (e.g., raycast hit) before proceeding
+        if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out doorhit, MaxDistance) && doorhit.transform.tag == "Door")
         {
- 
-            // if raycast hits, then it checks if it hit an object with the tag Door.
-            if (doorhit.transform.tag == "Door")
-            {
- 
-                //This line will get the Animator from  Parent of the door that was hit by the raycast.
-                anim = doorhit.transform.GetComponentInParent<Animator>();
- 
-                //This will set the bool the opposite of what it is.
-                opened = !opened;
- 
-                //This line will set the bool true so it will play the animation.
-                anim.SetBool("Opened", !opened);
-            }
+            anim = doorhit.transform.GetComponentInParent<Animator>();
+            opened = !opened;
+            anim.SetBool("Opened", opened);
         }
     }
 }
- 
+
+
+
+
