@@ -5,11 +5,13 @@ using UnityEngine;
 public class SC_CharacterController : MonoBehaviour
 {
     public float speed = 7.5f;
+    public float sprint = 5;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+    private float walkspeed = 2;
 
     CharacterController characterController;
     [HideInInspector]
@@ -58,6 +60,14 @@ public class SC_CharacterController : MonoBehaviour
             rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = sprint;
+        }
+        else
+        {
+            speed = walkspeed;
         }
     }
 }
