@@ -6,7 +6,6 @@ public class NoteReaderScript : MonoBehaviour
     public GameObject Note1Text;
     public GameObject NotePaperBackground;
     public Transform Note1;
-    public GameObject InterText;
 
     void Start()
     {
@@ -18,10 +17,8 @@ public class NoteReaderScript : MonoBehaviour
     void Update()
     {
         float dist = Vector3.Distance(Note1.position, transform.position);
-        Debug.Log(dist);
         if (dist < 2)
         {
-            InterText.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -29,11 +26,10 @@ public class NoteReaderScript : MonoBehaviour
                 NotePaperBackground.SetActive(true);
             }
         }
-        else
+        else if (dist > 2)
         {
             Note1Text.SetActive(false);
             NotePaperBackground.SetActive(false);
-            InterText.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

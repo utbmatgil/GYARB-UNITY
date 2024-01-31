@@ -7,7 +7,6 @@ public class ToggleTextField : MonoBehaviour
     public GameObject YouWinText;
     public Transform door;
     public InputField NumPad;
-    public GameObject InterText;
     private string Code;
     private string CorrectCode = "1234";
 
@@ -15,17 +14,14 @@ public class ToggleTextField : MonoBehaviour
     {
         // Initially, set the Text Input Field to be inactive (not visible).
         textFieldObject.SetActive(false);
-        InterText.SetActive(false);
     }
 
     void Update()
     {
         float dist = Vector3.Distance(door.position, transform.position);
-        InterText.SetActive(false);
         if (dist < 2)
         {
-            InterText.SetActive(true);
-    
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 textFieldObject.SetActive(true);
@@ -49,8 +45,14 @@ public class ToggleTextField : MonoBehaviour
                     Debug.Log("You Loose");
                 }
                 NumPad.text = "";
-                
+
             }
+        }
+        else if (dist > 2)
+        {
+            textFieldObject.SetActive(false);
+
+
         }
     }
 }
