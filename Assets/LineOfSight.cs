@@ -57,7 +57,7 @@ public class LineOfSight : MonoBehaviour
             if (points_hidden >= points.Length)
             {
                 chaseobject.SetActive(false);
-                enemy.SetDestination(waypoint1);
+              
 
             }
             else
@@ -70,6 +70,7 @@ public class LineOfSight : MonoBehaviour
     }
     private bool IsPointCovered(Vector3 target_direction, float target_distance)
     {
+        enemy.SetDestination(waypoint1);
         RaycastHit[] hits = Physics.RaycastAll(this.transform.position, target_direction, detection_collider.radius);
         foreach (RaycastHit hit in hits)
         {
