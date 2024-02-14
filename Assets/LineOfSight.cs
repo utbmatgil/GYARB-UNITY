@@ -22,6 +22,7 @@ public class LineOfSight : MonoBehaviour
     private void OnTriggerEnter(Collider other)
 
     {
+        enemy.SetDestination(waypoint1);
         if (other.tag == "Player")
         {
             target = other.gameObject;
