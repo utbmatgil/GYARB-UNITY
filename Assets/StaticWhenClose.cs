@@ -23,8 +23,6 @@ public class StaticWhenClose : MonoBehaviour
         float invertedDistance = 1 - scaledDistance;
         closeMusic.volume = 0f;
 
-        Debug.Log(invertedDistance);
-
         if (invertedDistance > 0f)
         {
             closeMusic.volume = invertedDistance;

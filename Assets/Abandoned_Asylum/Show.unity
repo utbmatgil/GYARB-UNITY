@@ -3055,13 +3055,29 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 849761163712838105, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 849761163712838105, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
       propertyPath: m_Direction
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 849761163712838119, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
       propertyPath: Note1
       value: 
       objectReference: {fileID: 2036859735}
+    - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1599183898}
+    - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
+      propertyPath: CloseText
+      value: 
+      objectReference: {fileID: 181453080}
     - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
       propertyPath: InterText
       value: 
@@ -3070,6 +3086,10 @@ PrefabInstance:
       propertyPath: Note1Text
       value: 
       objectReference: {fileID: 873537983}
+    - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
+      propertyPath: IntereactText
+      value: 
+      objectReference: {fileID: 181453080}
     - target: {fileID: 849761164032586958, guid: 4af357066d6b54d0ab93018bda00c13f, type: 3}
       propertyPath: NotePaperBackground
       value: 
@@ -3859,7 +3879,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3921,9 +3941,11 @@ MonoBehaviour:
   target: {fileID: 1599183894}
   detection_delay: 0.5
   enemy: {fileID: 1389087794}
+  EnemyPos: {fileID: 0}
   player: {fileID: 1599183898}
   chaseobject: {fileID: 1663459501}
-  waypoint1: {x: 0, y: 0, z: 0}
+  waypoint1: {x: 0, y: 0.26, z: 0}
+  waypoint2: {x: 10, y: 0.26, z: 0}
 --- !u!114 &1389087804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4240,9 +4262,11 @@ MonoBehaviour:
   target: {fileID: 0}
   detection_delay: 0.5
   enemy: {fileID: 0}
+  EnemyPos: {fileID: 0}
   player: {fileID: 0}
   chaseobject: {fileID: 0}
   waypoint1: {x: 0, y: 0, z: 0}
+  waypoint2: {x: 0, y: 0, z: 0}
 --- !u!135 &1507789305
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5252,15 +5276,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.84
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.23
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4467757482891228, guid: 227ee07e9e5b7914ba8fbb8f430be9a5, type: 3}
       propertyPath: m_LocalRotation.w

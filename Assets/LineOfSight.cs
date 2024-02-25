@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,14 +16,15 @@ public class LineOfSight : MonoBehaviour
     private Bounds player_bounds;
     private Coroutine detect_player;
     public NavMeshAgent enemy;
+    public Transform EnemyPos;
     public Transform player;
     public GameObject chaseobject;
     public Vector3 waypoint1;
+    public Vector3 waypoint2;
     private void Awake() => detection_collider = this.GetComponent<SphereCollider>();
     private void OnTriggerEnter(Collider other)
 
     {
-        enemy.SetDestination(waypoint1);
         if (other.tag == "Player")
         {
             target = other.gameObject;
@@ -30,14 +32,13 @@ public class LineOfSight : MonoBehaviour
             player_collider = other;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             target = null;
-            enemy.SetDestination(waypoint1);
             StopCoroutine(detect_player);
-            // player is hidden
         }
     }
     IEnumerator DetectPlayer()
@@ -58,7 +59,22 @@ public class LineOfSight : MonoBehaviour
             if (points_hidden >= points.Length)
             {
                 chaseobject.SetActive(false);
-              
+
+                enemy.SetDestination(waypoint1);
+                float DistTo1 = Vector3.Distance(EnemyPos.position, waypoint1);
+                float DistTo2 = Vector3.Distance(EnemyPos.position, waypoint2);
+
+                if (DistTo1 < 1)
+                {
+                    Debug.Log(DistTo2);
+                    enemy.SetDestination(waypoint2);
+
+                }
+                if (DistTo2 < 1)
+                {
+                    enemy.SetDestination(waypoint1);
+                }
+
 
             }
             else
@@ -71,7 +87,6 @@ public class LineOfSight : MonoBehaviour
     }
     private bool IsPointCovered(Vector3 target_direction, float target_distance)
     {
-        enemy.SetDestination(waypoint1);
         RaycastHit[] hits = Physics.RaycastAll(this.transform.position, target_direction, detection_collider.radius);
         foreach (RaycastHit hit in hits)
         {
