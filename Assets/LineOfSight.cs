@@ -66,10 +66,10 @@ public class LineOfSight : MonoBehaviour
 
                 if (DistTo1 < 1)
                 {
-                    Debug.Log(DistTo2);
                     enemy.SetDestination(waypoint2);
 
                 }
+
                 if (DistTo2 < 1)
                 {
                     enemy.SetDestination(waypoint1);
